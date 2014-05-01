@@ -68,7 +68,7 @@ class PodSearchRank
 
     def scrape_social_score(url)
       page = @agent.get(url)
-      page.search(".social-count").map(&:text).map(&:strip).map(&:to_i)
+      page.search(".social-count").map{ |elm| elm.text.strip.gsub(',', '').to_i }
     end
 
     def render_header
