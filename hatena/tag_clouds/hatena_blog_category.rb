@@ -45,6 +45,10 @@ module Hatena
         end
 
         def draw_distribution
+          puts 'y axis: number of articles'
+          puts 'x axis: number of categories'
+          puts
+
           max_scale = @categories.values.max / 10
 
           distribution = {}
