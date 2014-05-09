@@ -11,7 +11,7 @@
       if (m) {
         var category = m[1];
         var count = parseInt(m[2]);
-        
+
         if(count >= 150)      elm.css("font-size", "300%");
         else if(count >= 100) elm.css("font-size", "250%");
         else if(count >= 50)  elm.css("font-size", "200%");
@@ -24,4 +24,3 @@
   });
 })(jQuery);
 </script>
-
