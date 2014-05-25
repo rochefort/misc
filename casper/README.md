@@ -3,7 +3,8 @@ CasperJSによるWebオートメーションE2Eテスト
 
 ## memo
 - PhantomJSのラッパ(PhantomJSはWebkitベースのヘッドレスブラウザ)
-- npmが利用できる(限定的、nodeとは異なる!!)
+- npmが利用できる(限定的、nodeとは異なる!!)  
+SpookyJSなどのNode.jsモジュールを使うと、Node.js上でCasperJSをインスタンス化できる
 - 画面キャプチャのAPIもある
 - viewportを複数切り替えてスクリーンショットを撮る例  
 casper.each  
