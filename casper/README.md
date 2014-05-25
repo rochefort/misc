@@ -14,13 +14,13 @@ remote.message, page.error
 casper.each  
 https://gist.github.com/nhoizey/4060568
 - debug  
-```js
+```javascript
 casperjs 01_scraping_google.js --verbose --log-level=debug
 ```
 - testing  
   - 共通処理(--pre, --post, --includes で別スクリプトに分ける)
   - execute:  
-```js
+```javascript
 casperjs test 07_e2e_testing.coffee
 ```
 - documents  
