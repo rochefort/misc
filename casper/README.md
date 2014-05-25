@@ -12,3 +12,7 @@ https://gist.github.com/nhoizey/4060568
 ```js
 casperjs 01_scraping_google.js --verbose --log-level=debug
 ```
+--testing  
+```js
+casperjs test 07_e2e_testing.coffee
+```
