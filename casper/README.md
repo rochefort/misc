@@ -12,7 +12,10 @@ https://gist.github.com/nhoizey/4060568
 ```js
 casperjs 01_scraping_google.js --verbose --log-level=debug
 ```
---testing  
+- testing  
 ```js
 casperjs test 07_e2e_testing.coffee
 ```
+- documents  
+http://casperjs.readthedocs.org/en/latest/modules/  
+http://casperjs.readthedocs.org/en/latest/testing.html  
