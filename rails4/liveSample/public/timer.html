@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Timer Example</title>
+  <script src="http://code.jquery.com/jquery.js"></script>
+  <script>
+    $(function() {
+      var timerSource = new EventSource('/tick');
+      timerSource.onmessage = function(e) {
+        $('#timer').text(e.data);
+      };
+    });
+  </script>
+</head>
+<body>
+  Timer: <span id="timer"></span> seconds.
+</body>
+</html>
