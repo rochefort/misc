@@ -1,0 +1,6 @@
+# shell
+declare -i sum=0; for i in $(seq 1 `grep "食費" test.csv | wc -l`); do sum+=`grep "食費" test.csv | cut -d, -f3 | head -$i | tail -1`; done
+echo $sum
+
+# awk
+awk -F, '$2=="食費"{ sum += $3 }; END{ print sum }' test.csv 
