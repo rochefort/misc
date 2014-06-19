@@ -1,0 +1,5 @@
+source 'https://rubygems.org'
+
+gem 'twitter', '~> 5.9.0'
+gem 'mongo',    '~> 1.10.1'
+gem 'bson_ext', '~> 1.10.1'
