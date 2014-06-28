@@ -40,3 +40,11 @@ gem 'spring',        group: :development
 
 gem 'omniauth', '~> 1.2.1'
 gem 'omniauth-twitter', '~> 1.0.1'
+
+gem 'pry-rails',         group: [:development, :test]
+gem 'pry-doc',           group: [:development, :test]
+gem 'pry-byebug',        group: [:development, :test]
+gem 'hirb',              group: [:development, :test]
+gem 'hirb-unicode',      group: [:development, :test]
+gem 'better_errors',     group: [:development, :test]
+gem 'binding_of_caller', group: [:development, :test]
