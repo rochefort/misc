@@ -48,6 +48,8 @@ gem 'mini_magick', '~> 3.7.0'
 
 group :development, :test do
   gem 'rspec-rails', '3.0.1'
+  gem 'shoulda-matchers', '~> 2.6.0'
+
   gem 'pry-rails'
   gem 'pry-doc'
   gem 'pry-byebug'
