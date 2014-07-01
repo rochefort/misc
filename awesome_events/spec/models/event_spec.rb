@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Event, :type => :model do
+RSpec.describe Event do
   describe '#name' do
     it { should validate_presence_of(:name) }
     it { should ensure_length_of(:name).is_at_most(50) }

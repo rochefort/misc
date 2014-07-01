@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe EventsController, :type => :controller do
+RSpec.describe EventsController do
   describe 'GET #new' do
     context '未ログインユーザがアクセスしたとき' do
       before { get :new }
