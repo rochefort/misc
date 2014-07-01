@@ -48,9 +48,9 @@ gem 'mini_magick', '~> 3.7.0'
 
 group :development, :test do
   gem 'rspec-rails', '3.0.1'
-  gem 'shoulda-matchers', '~> 2.6.0'
   gem 'factory_girl_rails', '~> 4.4.1'
 
+  gem 'pry', '< 0.10.0'
   gem 'pry-rails'
   gem 'pry-doc'
   gem 'pry-byebug'
@@ -58,4 +58,9 @@ group :development, :test do
   gem 'hirb-unicode'
   gem 'better_errors'
   gem 'binding_of_caller'
+end
+
+group :test do
+  gem 'shoulda-matchers', '~> 2.6.0'
+  gem 'capybara', '~> 2.2.1'
 end
