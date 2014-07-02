@@ -24,6 +24,10 @@ class Event < ActiveRecord::Base
     owner_id == user.id
   end
 
+  def rails?
+    name.include? 'Rails'
+  end
+
   private
     def start_time_should_be_before_end_time
       return unless start_time && end_time
