@@ -6,23 +6,26 @@ require 'yaml'
 class VoiceSample
   SPEAKER = [:haruka, :hikari, :takeru]
 
-  def speak
-    settings = YAML.load_file('settings.yml')
-    client = Twitter::REST::Client.new(settings['twitter'])
-    voice = VoiceTextAPI.new(settings['voice_api_key'])
+  def initialize
+    settings  = YAML.load_file('settings.yml')
+    @client   = Twitter::REST::Client.new(settings['twitter'])
+    @voice    = VoiceTextAPI.new(settings['voice_api_key'])
+    @sox_path = settings['sox_path']
+  end
 
-    client.home_timeline({count: 200}).each do |tweet|
+  def speak
+    @client.home_timeline({count: 200}).each do |tweet|
       speaker = SPEAKER[rand(3)]
       text = tweet.text
       emolevel =  text.match(/[!！]/) ? 2 : 1
       emotion = distinguish_emotion(text)
 
       if emotion
-        wav = voice.tts(text, speaker, emotion: emotion, emotion_level: emolevel)
+        wav = @voice.tts(text, speaker, emotion: emotion, emotion_level: emolevel)
       else
-        wav = voice.tts(text, speaker)
+        wav = @voice.tts(text, speaker)
       end
-      Open3.capture3("#{settings['sox_path'] + '/play -'}", stdin_data: wav)
+      Open3.capture3("#{@sox_path + '/play -'}", stdin_data: wav)
     end
   rescue
     puts "RuntimeError: #{$!}"
