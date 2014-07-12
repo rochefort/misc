@@ -16,6 +16,7 @@ function render($output)
 {
   echo $output . PHP_EOL;
 }
+
 for ($i=1; $i <= 20; $i++) {
   $fizzbuzz = evaluate($i);
   render($fizzbuzz);
