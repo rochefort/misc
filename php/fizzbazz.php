@@ -1,12 +1,22 @@
 <?php
-for ($i=1; $i <= 20; $i++) {
+function evaluate($i)
+{
   if ($i % 3 === 0 && $i % 5 === 0) {
-    echo 'FizzBuzz' . PHP_EOL;
+    return 'FizzBuzz';
   } else if ($i % 3 === 0) {
-    echo 'Fizz' . PHP_EOL;
+    return 'Fizz';
   } else if ($i % 5 === 0) {
-    echo 'Buzz' . PHP_EOL;
+    return 'Buzz';
   } else {
-    echo $i . PHP_EOL;
+    return $i;
   }
+}
+
+function render($output)
+{
+  echo $output . PHP_EOL;
+}
+for ($i=1; $i <= 20; $i++) {
+  $fizzbuzz = evaluate($i);
+  render($fizzbuzz);
 }
