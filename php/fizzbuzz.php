@@ -1,23 +1,9 @@
 <?php
-function evaluate($i)
-{
-  if ($i % 3 === 0 && $i % 5 === 0) {
-    return 'FizzBuzz';
-  } else if ($i % 3 === 0) {
-    return 'Fizz';
-  } else if ($i % 5 === 0) {
-    return 'Buzz';
-  } else {
-    return $i;
-  }
-}
+require_once __DIR__ . '/class/FizzBuzz.php';
 
-function render($output)
-{
-  echo $output . PHP_EOL;
-}
+$obj = new FizzBuzz();
 
 for ($i=1; $i <= 20; $i++) {
-  $fizzbuzz = evaluate($i);
-  render($fizzbuzz);
+    $fizzbuzz = $obj->evaluate($i);
+    $obj->render($fizzbuzz);
 }
