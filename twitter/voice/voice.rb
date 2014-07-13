@@ -14,7 +14,8 @@ class VoiceSample
   end
 
   def speak
-    @client.home_timeline({count: 200}).each do |tweet|
+    # @client.home_timeline({count: 200}).each do |tweet|
+    @client.search('rubykaigi', {count: 200}).each do |tweet|
       speaker = SPEAKER[rand(3)]
       text = tweet.text
       emolevel =  text.match(/[!！]/) ? 2 : 1
