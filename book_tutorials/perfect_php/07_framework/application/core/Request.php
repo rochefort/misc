@@ -5,7 +5,7 @@ class Request
     public function isPost()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            retur true;
+            return true;
         }
         return false;
     }
