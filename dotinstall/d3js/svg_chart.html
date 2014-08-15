@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<title>D3.jsの練習: svg</title>
+</head>
+<body>
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script>
+	var dataset = [11, 25, 45, 30, 33];
+	
+	var w = 500;
+	var h = 200;
+	
+	var svg = d3.select("body").append("svg").attr({width: w, height: h});
+	
+	svg.selectAll("rect")
+		.data(dataset)
+		.enter()
+		.append("rect")
+		.attr({
+			x: 0,
+			y: function(d, i) { return i * 25 },
+			width: function(d) { return d; },
+			height: 20,
+			fill: "red"
+		});
+</script>
+</body>
+</html>
