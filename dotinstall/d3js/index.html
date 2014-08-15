@@ -50,17 +50,55 @@
 		// #05 要素追加/削除
 		// d3.select("body").append("p").text("hello 4").remove();
 		
-		// #06 data
-		var dataset = [12, 24, 36];
-		var p = d3.select("body").selectAll("p");
+		// #06,07,08 data
+		// var dataset = [12, 24, 36, 48];
+		// var p = d3.select("body").selectAll("p");
 
 		// p.data(dataset).text(function(d){
 		// 	return d;
 		// });
 
-		p.data(dataset).text(function(d, i){
-			return i + "番目は" + d + "です！";
+		// p.data(dataset).text(function(d, i){
+		// 	return i + "番目は" + d + "です！";
+		// });
+		
+		// #07 update/enter/exit
+		/*
+		dataを使った主運間に仮想領域が作られる
+		
+		update: 対応する要素がある場合
+		  -> text, style
+		enter: 対応する要素が足りない場合(dataset = [12, 24, 36, 48])
+		  -> append
+		exit: 対応する要素が余った場合(dataset = [12, 24])
+		  -> remove
+		*/
+		/*
+		var dataset = [12, 24, 36, 48];
+		var p = d3.select("body").selectAll("p");
+
+		var update = p.data(dataset);
+		var enter = update.enter();
+		update.text(function(d){
+			return "update:" + d;
 		});
+		
+		enter.append("p").text(function(d){
+			return "enter:" + d;
+		});
+		*/
+		var dataset = [12, 24];
+		var p = d3.select("body").selectAll("p");
+
+		var update = p.data(dataset);
+		var exit = update.exit();
+		update.text(function(d){
+			return "update:" + d;
+		});
+		
+		exit.style("color", "red").remove();
+
+		
 
 </script>
 </body>
