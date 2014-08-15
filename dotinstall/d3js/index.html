@@ -48,8 +48,20 @@
 		// });
 		
 		// #05 要素追加/削除
-		d3.select("body").append("p").text("hello 4").remove();
+		// d3.select("body").append("p").text("hello 4").remove();
 		
+		// #06 data
+		var dataset = [12, 24, 36];
+		var p = d3.select("body").selectAll("p");
+
+		// p.data(dataset).text(function(d){
+		// 	return d;
+		// });
+
+		p.data(dataset).text(function(d, i){
+			return i + "番目は" + d + "です！";
+		});
+
 </script>
 </body>
 </html>
