@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<title>D3.jsの編集</title>
+</head>
+<body>
+	<p>Hello 1</p>
+	<p>Hello 2</p>
+	<p>Hello 3</p>
+	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+	<script>
+		/*
+		1) 要素を指定
+		select selectAll
+		
+		2)設定したり、取得したり
+		https://github.com/mbostock/d3/wiki/API-Reference
+		text
+		attr
+		style
+		append
+		remove
+		*/
+		d3.select("body").selectAll("p").text("hello from d3!")
+	</script>
+</body>
+</html>
