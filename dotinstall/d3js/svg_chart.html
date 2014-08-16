@@ -20,6 +20,7 @@
 	
 	var w = 500;
 	var h = 200;
+	var padding = 20;
 	
 	// var xScale = d3.scale.linear()
 	// 	.domain([0, d3.max(dataset)])
@@ -28,7 +29,7 @@
 	// niceはdomainの値を見て切りのいい値にしてくれる
 	var xScale = d3.scale.linear()
 		.domain([0, d3.max(dataset)])
-		.range([0, w])
+		.range([padding, w - padding])
 		.nice();
 	
 	var svg = d3.select("body").append("svg").attr({width: w, height: h});
@@ -50,9 +51,9 @@
 		.enter()
 		.append("rect")
 		.attr({
-			x: 0,
+			x: padding,
 			y: function(d, i) { return i * 25 },
-			width: function(d) { return xScale(d); },
+			width: function(d) { return xScale(d) - padding; },
 			height: 20,
 			fill: "red"
 		});
