@@ -3,6 +3,15 @@
 <head>
 	<meta charset="UTF-8">
 	<title>D3.jsの練習: svg</title>
+	<style>
+		.axis path, .axis line {
+			fill :none;
+			stroke: black;
+		}
+		.axis text {
+			font-size: 11px;
+		}
+	</style>
 </head>
 <body>
 <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
@@ -23,6 +32,18 @@
 		.nice();
 	
 	var svg = d3.select("body").append("svg").attr({width: w, height: h});
+	
+	var xAxis = d3.svg.axis()
+		.scale(xScale)
+		.orient("bottom");
+		
+	// g: group
+	svg.append("g")
+	.attr({
+		class: "axis",
+		transform: "translate(0, 180)"
+	})
+		.call(xAxis);
 	
 	svg.selectAll("rect")
 		.data(dataset)
