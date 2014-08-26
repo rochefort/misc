@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 require 'cgi'
+require 'open-uri'
 
 def parse(page_source)
   dates = page_source.scan(%r!(\d+)年 ?(\d+)月 ?(\d+)日<br />!)
@@ -17,10 +18,8 @@ def format_text(title, url, url_title_time_ary)
   end
 end
 
-# x = parse(open('samplepage.html', &:read))
-# puts parse(`wget -q -O- http://crawler.sbcr.jp/samplepage.html`)
 puts format_text(
   'WWW.SBCR.JP トピックス',
   'http://crawler.sbcr.jp/samplepage.html',
-  parse(`wget -q -O- http://crawler.sbcr.jp/samplepage.html`)
+  parse(open('http://crawler.sbcr.jp/samplepage.html', 'r:UTF-8', &:read))
 )
