@@ -10,3 +10,30 @@ who.phpでapacheの実行ユーザを確認
 <?php echo `whoami`; ?>
 ```
 sudo chown -R _www blog/app/tmp
+
+#04 setup
+apache virtual host & hosts settings
+```
+<VirtualHost *:80>
+  DocumentRoot "/Users/trsw/github/misc/dotinstall/cakephp/blog/app/webroot"
+  ServerName cakephp.local
+  <Directory "/Users/trsw/github/misc/dotinstall/cakephp/blog/app/webroot">
+    Options Indexes FollowSymLinks MultiViews
+    AllowOverride None
+    Order allow,deny
+    Allow from all
+  </Directory>
+</VirtualHost>
+```
+
+othser
+- core.php settings
+```
+http://www.phpbook.jp/cakephp/install/index1.html
+```
+- mysql socket
+macはcakeのdefaultと違うらしい。
+mysql_config --socket で調べて設定。
+```
+'unix_socket' => '/tmp/mysql.sock'
+```
