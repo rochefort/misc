@@ -114,3 +114,7 @@ index 87bd85e..3991cba 100644
  ; http output encoding. mb_output_handler must be
  ; registered as output buffer to function
 ```
+
+#10
+- routerで'/'設定
+- title_for_layout
