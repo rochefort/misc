@@ -66,3 +66,51 @@ class PostsController extends AppController {
     public $scaffold;
 }
 ```
+
+#08-
+debug情報はcore.phpでやっている
+他php.ini設定(timezone/文字化け)
+```
+diff --git a/php.ini b/php.ini.default
+index 87bd85e..3991cba 100644
+--- a/php.ini
++++ b/php.ini.default
+@@ -680,7 +680,7 @@ default_mimetype = "text/html"
+
+ ; PHP's default character set is set to empty.
+ ; http://php.net/default-charset
+-default_charset = "UTF-8"
++;default_charset = "UTF-8"
+
+ ; Always populate the $HTTP_RAW_POST_DATA variable. PHP's default behavior is
+ ; to disable this feature. If post reading is disabled through
+@@ -907,7 +907,6 @@ cli_server.color = On
+ ; Defines the default timezone used by the date functions
+ ; http://php.net/date.timezone
+ ;date.timezone =
+-date.timezone = Asia/Tokyo
+
+ ; http://php.net/date.default-latitude
+ ;date.default_latitude = 31.7667
+@@ -1687,18 +1686,17 @@ mssql.secure_connection = Off
+ [mbstring]
+ ; language for internal character representation.
+ ; http://php.net/mbstring.language
+-mbstring.language = Japanese
++;mbstring.language = Japanese
+
+ ; internal/script encoding.
+ ; Some encoding cannot work as internal encoding.
+ ; (e.g. SJIS, BIG5, ISO-2022-*)
+ ; http://php.net/mbstring.internal-encoding
+ ;mbstring.internal_encoding = EUC-JP
+-mbstring.internal_encoding = UTF-8
+
+ ; http input encoding.
+ ; http://php.net/mbstring.http-input
+-mbstring.http_input = auto
++;mbstring.http_input = auto
+
+ ; http output encoding. mb_output_handler must be
+ ; registered as output buffer to function
+```
