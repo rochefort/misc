@@ -19,7 +19,7 @@ apache virtual host & hosts settings
   ServerName cakephp.local
   <Directory "/Users/trsw/github/misc/dotinstall/cakephp/blog/app/webroot">
     Options Indexes FollowSymLinks MultiViews
-    AllowOverride None
+    AllowOverride All
     Order allow,deny
     Allow from all
   </Directory>
@@ -58,3 +58,11 @@ insert into posts (title, body, created, modified) values
 ('titel 1', 'body 1', now(), now()),
 ('titel 2', 'body 2', now(), now()),
 ('titel 3', 'body 3', now(), now());
+
+#07 scaffold
+
+```
+class PostsController extends AppController {
+    public $scaffold;
+}
+```
