@@ -1,3 +1,5 @@
+http://dotinstall.com/lessons/basic_cakephp/
+
 cake
 
 #01
