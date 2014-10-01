@@ -21,3 +21,9 @@ Usage: main [options]
 
 #3 sinatra-contrib
 'sinatra/reloader'
+
+#4 params
+get '/hello/:name' do
+get '/hello/:name' do |n|
+get '/hello/:fname/?:lname?' do |f, l|
+?をつけるとoptional

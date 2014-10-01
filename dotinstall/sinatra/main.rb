@@ -1,10 +1,14 @@
 require 'sinatra'
 require 'sinatra/reloader'
 
-get '/' do
-  'hello world'
-end
+# get '/hello/:name' do
+#   "hello #{params[:name]}"
+# end
 
-get '/about' do
-  'about this is page 2'
+# get '/hello/:name' do |n|
+#   "hello #{n}"
+# end
+
+get '/hello/:fname/?:lname?' do |f, l|
+  "hello #{f} #{l}"
 end
