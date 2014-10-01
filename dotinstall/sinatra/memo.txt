@@ -1,0 +1,9 @@
+Sinatra入門
+http://dotinstall.com/lessons/basic_sinatra/23601
+
+ruby 2.0.0p195
+gem 2.0.3
+activerecord 3.2.13
+sqlite3 1.3.7
+sinatra 1.4.3
+sinatra-contrib 1.4.0
