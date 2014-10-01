@@ -1,14 +1,12 @@
 require 'sinatra'
 require 'sinatra/reloader'
 
-# get '/hello/:name' do
-#   "hello #{params[:name]}"
-# end
+=begin
+get '/from/*/to/*' do |f, t|
+  "hello #{f} #{t}"
+end
+=end
 
-# get '/hello/:name' do |n|
-#   "hello #{n}"
-# end
-
-get '/hello/:fname/?:lname?' do |f, l|
-  "hello #{f} #{l}"
+get %r{/users/([0-9]*)} do |i|
+  "user id = #{i}"
 end

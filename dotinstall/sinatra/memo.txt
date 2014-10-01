@@ -27,3 +27,7 @@ get '/hello/:name' do
 get '/hello/:name' do |n|
 get '/hello/:fname/?:lname?' do |f, l|
 ?をつけるとoptional
+
+#5 wildcard / regexp params
+get '/from/*/to/*' do |f, t|
+get %r{/users/([0-9]*)} do |i|
