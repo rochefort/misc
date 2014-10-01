@@ -18,3 +18,6 @@ Usage: main [options]
     -e env                           set the environment (default is development)
     -s server                        specify rack server/handler (default is thin)
     -x                               turn on the mutex lock (default is off)
+
+#3 sinatra-contrib
+'sinatra/reloader'
