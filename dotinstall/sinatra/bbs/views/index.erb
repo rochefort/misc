@@ -9,7 +9,7 @@
   <ul>
     <% @comments.each do |comment| %>
     <li data-id="<%= comment.id %>">
-      <%= comment.body %>
+      <%= h comment.body %>
       <span class="deleteCmd" style="cursor:pointer;color:blue">[x]</span>
     </li>
     <% end %>
