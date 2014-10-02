@@ -19,3 +19,5 @@ gcc -o hello hello.c
 #6 switch
 
 #7 while
+
+#8 for (continue, break)
