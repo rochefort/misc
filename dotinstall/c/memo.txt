@@ -23,3 +23,5 @@ gcc -o hello hello.c
 #8 for (continue, break)
 
 #9 function
+
+#10 function プロトタイプ宣言

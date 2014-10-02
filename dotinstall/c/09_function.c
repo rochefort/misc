@@ -7,7 +7,24 @@
   処理;
   return 返り値;
 }
+
+プロトタイプ宣言
 */
+float getMax(float a, float b);
+
+void sayHi(void) {
+  printf("h1!\n");
+}
+
+int main(void) {
+  float result;
+  result = getMax(2.3, 5.2);
+  printf("%f\n", result);
+
+  sayHi();
+
+  return 0;
+}
 
 float getMax(float a, float b) {
   if(a >= b) {
@@ -15,11 +32,4 @@ float getMax(float a, float b) {
   } else {
     return b;
   }
-}
-
-int main(void) {
-  float result;
-  result = getMax(2.3, 5.2);
-  printf("%f\n", result);
-  return 0;
 }
