@@ -39,3 +39,9 @@ get %r{/users/([0-9]*)} do |i|
 #9 filter
 
 #10 helper
+
+#11 掲示板
+create table comments(
+  id integer primary key,
+  body text
+);
