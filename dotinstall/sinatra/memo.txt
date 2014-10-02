@@ -37,3 +37,5 @@ get %r{/users/([0-9]*)} do |i|
 #8 layout.erb
 
 #9 filter
+
+#10 helper
