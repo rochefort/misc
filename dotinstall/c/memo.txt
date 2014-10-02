@@ -1,2 +1,11 @@
 C言語の基礎
 http://dotinstall.com/lessons/basic_c/
+
+Linux gcc (GNU C Complier)
+gcc4.1.2
+
+#2 hello world
+stdio
+standard io
+
+gcc -o hello hello.c
