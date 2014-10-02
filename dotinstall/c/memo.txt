@@ -15,3 +15,5 @@ gcc -o hello hello.c
 #4 演算子
 
 #5 if
+
+#6 switch
