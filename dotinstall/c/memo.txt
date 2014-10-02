@@ -21,3 +21,5 @@ gcc -o hello hello.c
 #7 while
 
 #8 for (continue, break)
+
+#9 function
