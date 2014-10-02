@@ -10,6 +10,7 @@
     <% @comments.each do |comment| %>
     <li data-id="<%= comment.id %>">
       <%= comment.body %>
+      <span class="deleteCmd" style="cursor:pointer;color:blue">[x]</span>
     </li>
     <% end %>
   </ul>
@@ -18,5 +19,18 @@
     <input type="text" name="body">
     <input type="submit" value="post">
   </form>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script>
+    $('.deleteCmd').click(function() {
+      var el = $(this).parent();
+      if (confirm('are you shre to delete?')) {
+        $.post('/delete', {
+          id: el.data('id')
+        }, function() {
+          el.fadeOut(800);
+        });
+      }
+    });
+  </script>
 </body>
 </html>
