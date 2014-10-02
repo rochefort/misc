@@ -11,3 +11,5 @@ standard io
 gcc -o hello hello.c
 
 #3 変数
+
+#4 演算子
