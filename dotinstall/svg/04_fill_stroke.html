@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>SVGの編集</title>
+</head>
+<body>
+<svg width="600" height="300">
+  <defs>
+    <style type="text/css"><![CDATA[
+    #myBox{
+      fill:red;
+      stroke:black;
+    }
+    ]]>
+    </style>
+  </defs>
+<!--   <rect width="600" height="300" fill="red" stroke="black" stroke-width="10" stroke-dasharray="20,5"/>
+ -->
+  <rect width="600" height="300" style="fill:red; stroke:black; stroke-width:10; stroke-dasharray:20,5"/>
+
+<rect width="600" height="300" id="myBox"/>
+
+<!--
+  <rect width="500" height="250" fill="#00ff00"/>
+  <rect width="400" height="200" fill="rgb(0,0,255)"/>
+  <rect width="300" height="150" fill="rgba(255,255,0,4)"/>
+-->
+</svg>
+</body>
+</html>
