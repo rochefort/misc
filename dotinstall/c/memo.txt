@@ -33,3 +33,6 @@ gcc -o hello hello.c
 #13 変数の期限 static
 
 #14 配列
+
+#15 文字列
+char型の配列
