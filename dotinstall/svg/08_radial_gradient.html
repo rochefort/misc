@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>SVGの編集</title>
+</head>
+<body>
+<svg width="600" height="300">
+  <defs>
+    <radialGradient id="g1" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="skyblue"/>
+      <stop offset="0.8" stop-color="pink"/>
+      <stop offset="1" stop-color="yellow" stop-opacity="0.5"/>
+    </radialGradient>
+  </defs>
+  <rect width="300" height="300" fill="url(#g1)"/>
+</svg>
+</body>
+</html>
