@@ -29,3 +29,5 @@ gcc -o hello hello.c
 #11 三項演算子
 
 #12 scope
+
+#13 変数の期限 static
