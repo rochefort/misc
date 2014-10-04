@@ -36,3 +36,5 @@ gcc -o hello hello.c
 
 #15 文字列
 char型の配列
+
+#16 pointer
