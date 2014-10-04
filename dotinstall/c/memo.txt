@@ -27,3 +27,5 @@ gcc -o hello hello.c
 #10 function プロトタイプ宣言
 
 #11 三項演算子
+
+#12 scope
