@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>SVGの編集</title>
+</head>
+<body>
+<svg width="600" height="300" onload="
+  var c = document.getElementsByTagName('circle');
+  for (var i=0; i<c.length; i++) {
+    c[i].setAttribute('cx', r(600));
+    c[i].setAttribute('cy', r(400));
+    c[i].setAttribute('r', r(100));
+    c[i].setAttribute('fill', 'rgb('+r(255)+','+r(255)+','+r(255)+')');
+  }
+  function r(n) {
+    return Math.floor(Math.random() * (n+1));
+  }
+">
+  <rect width="600" height="300" fill="red"/>
+  <circle cx="100" cy="100" r="20" fill="white"/>
+  <circle cx="100" cy="100" r="20" fill="white"/>
+  <circle cx="100" cy="100" r="20" fill="white"/>
+  <circle cx="100" cy="100" r="20" fill="white"/>
+  <circle cx="100" cy="100" r="20" fill="white"/>
+  <circle cx="100" cy="100" r="20" fill="white"/>
+  <circle cx="100" cy="100" r="20" fill="white"/>
+  <circle cx="100" cy="100" r="20" fill="white"/>
+  <circle cx="100" cy="100" r="20" fill="white"/>
+  <circle cx="100" cy="100" r="20" fill="white"/>
+  <circle cx="100" cy="100" r="20" fill="white"/>
+  <circle cx="100" cy="100" r="20" fill="white"/>
+  <circle cx="100" cy="100" r="20" fill="white"/>
+  <circle cx="100" cy="100" r="20" fill="white"/>
+  <circle cx="100" cy="100" r="20" fill="white"/>
+</svg>
+</body>
+</html>
