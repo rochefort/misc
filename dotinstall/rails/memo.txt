@@ -7,3 +7,6 @@ rails 4.0
 
 #05 taskapp
 r g model Project title
+
+#07 controller
+r g controller Projects
