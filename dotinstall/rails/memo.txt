@@ -3,3 +3,7 @@ http://dotinstall.com/lessons/basic_rails_v2
 
 ruby 2.0
 rails 4.0
+
+
+#05 taskapp
+r g model Project title
