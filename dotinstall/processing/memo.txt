@@ -1,0 +1,196 @@
+# 03 rect
+rect(50, 50, 80, 30); // x, y, width, height
+rect(50, 50, 80, 30, 10); // x, y, width, height
+rect(width/2, height/2, 80, 30, 10);
+
+
+# 04 rectMode()
+rectMode(CORNERS);
+rect(50, 50, 80, 100); // xy, xy
+
+// 中心地点を設定
+rectMode(CENTER);
+rect(50, 50, 100, 100); // center xy, width, height
+
+// 中心地点kからそれぞれの距離
+rectMode(RADIUS);
+rect(50, 50, 30, 40); // center xy, dist, dist
+
+
+# 05 色の指定方法
+// color
+// 0-255 127
+// RGB 255, 0, 0
+// #ff0000
+//fill(#ff0000, 127);
+
+// colormodeを指定、第2引数は範囲を設定することが可能
+colorMode(HSB);
+//colorMode(RGB, 100);
+
+// 色相、彩度、明るさ
+//fill(100, 100, 255);
+//noFill();
+rect(50, 50, 80, 30);
+
+
+# 06 stroke
+stroke(#ff0000);
+strokeWeight(3);
+
+noStroke();
+
+# 07 point, line, ellipse, arc
+stroke(#333333);
+fill(#999999);
+point(50, 50);
+line(50, 50, 100, 100);
+ellipse(50, 50, 80, 80); // ellipsemode(CENTER);
+
+// 円弧
+arc(50, 50, 80, 80, 0, PI);
+arc(50, 50, 80, 80, 0, radians(180));
+arc(50, 50, 80, 80, 0, radians(180), OPEN);
+
+// 中心に線を引く形
+arc(50, 50, 80, 80, 0, radians(225), PIE);
+// 中心を通らず線を引く形
+arc(50, 50, 80, 80, 0, radians(225), CHORD);
+
+
+# 08 点をつなぐ
+beginShape();
+vertex(100, 20);
+vertex(120, 100);
+vertex(100, 80);
+vertex(80, 100);
+endShape(CLOSE);
+
+
+# 09 image
+PImage img;
+img = loadImage("octocat.jpg");
+//image(img, 10, 10, 50, 50);
+
+tint(#ff0000, 127);
+image(img, 10, 10);
+filter(GRAY);
+filter(BLUR, 3);
+
+
+# 10 text
+PFont f;
+f = createFont("Helvetica", 16, true);
+
+textFont(f, 18);
+fill(#00ff00);
+
+text("hello world", 100, 100);
+
+
+# 11 pushMatrix
+fill(#ff0000, 127);
+noStroke();
+rect(10,10,50,50);
+
+fill(#0000ff, 127);
+noStroke();
+pushMatrix();
+//translate(10, 10);
+//rotate(radians(30));
+scale(2, 0.5);
+rect(10,10,50,50);
+popMatrix();
+
+
+# 12 box, shape
+size(200, 200, P3D);
+smooth();
+background(0);
+lights();
+
+// box
+// sphere
+
+pushMatrix();
+translate(50, 50, 0);
+rotateX(radians(30));
+rotateY(radians(40));
+rotateZ(radians(10));
+noStroke();
+box(40);
+popMatrix();
+
+pushMatrix();
+translate(100, 100, -100);
+noStroke();
+sphere(40);
+popMatrix();
+
+
+# 13 setup, draw
+// animation
+void setup() {
+  size(200, 200);
+  smooth();
+  background(255);
+
+  noStroke();
+  fill(#ff0000);
+
+  frameRate(10);
+}
+
+int x = 0;
+int y = 0;
+void draw() {
+  background(255);
+  rect(x,y,100,100);
+  x++;
+  y++;
+  println(frameCount);
+}
+
+
+# 14 mouse
+// mouseX, mouseY
+// mousePressed
+void setup() {
+  size(200, 200);
+  smooth();
+  background(255);
+  noStroke();
+  fill(#ff0000);
+}
+
+int r = 100;
+void draw() {
+  background(255);
+//  if (mousePressed) {
+//    fill(255);
+//  } else {
+//    fill(#ff0000);
+//  }
+  ellipse(mouseX, mouseY, r, r);
+}
+
+void mousePressed() {
+  r += 5;
+}
+
+# 15 controP5
+import controlP5.*;
+ControlP5 cp5;
+
+void setup() {
+  size(200, 200);
+  smooth();
+  background(255);
+  noStroke();
+  fill(#ff0000);
+  cp5 = new ControlP5(this);
+  cp5.addSlider("r")
+     .setPosition(10, 10)
+     .setSize(100, 15)
+     .setRange(0, 255);
+}
