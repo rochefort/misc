@@ -57,3 +57,12 @@ var Task = Backbone.Model.extend({
 console.log(task1.toJSON());
 task1.set({title: ''}, {validate: true});
 console.log(task1.toJSON());
+
+
+# 06 view
+* tagName重要
+* el
+* $el -> jquery object
+
+var taskView = new TaskView({model: task});
+console.log(taskView.$el);
