@@ -1,4 +1,8 @@
-(function() {
+#03 modelの作り方
+* Backbone.Model.extend
+* defaults
+* toJSON()
+
 // Model
 var Task = Backbone.Model.extend({
   defaults: {
