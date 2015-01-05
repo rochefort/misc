@@ -1,4 +1,4 @@
-#03 modelの作り方
+# 03 modelの作り方
 * Backbone.Model.extend
 * defaults
 * toJSON()
@@ -15,3 +15,24 @@ var task1 = new Task({
 });
 console.log(task1.toJSON());
 })();
+
+
+# 04 get/set
+* get/set
+* methodも可能
+task1.set('title', 'newTitle');
+var title = task1.get('title');
+
+
+var Task = Backbone.Model.extend({
+  defaults: {
+    title: 'do something!',
+    completed: false
+  },
+  toggle: function() {
+    this.set('completed', !this.get('completed'));
+  }
+});
+console.log(task1.toJSON());
+task1.toggle();
+console.log(task1.toJSON());
