@@ -23,7 +23,18 @@ var TaskView = Backbone.View.extend({
     return this;
   }
 });
-var taskView = new TaskView({model: task});
-console.log(taskView.render().el);
-$('body').append(taskView.render().el);
+
+// Colection
+var Tasks = Backbone.Collection.extend({
+  model: Task
+});
+var tasks = new Tasks([
+  {
+    titel: 'task1',
+    completed: true
+  },
+  {titel: 'task2'},
+  {titel: 'task3'},
+]);
+console.log(tasks.toJSON());
 })();
