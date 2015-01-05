@@ -15,9 +15,15 @@ var Task = Backbone.Model.extend({
 var task = new Task();
 
 var TaskView = Backbone.View.extend({
-  tagName: 'li'
+  tagName: 'li',
+  template: _.template("<%- title %>"),
+  render: function() {
+    var template = this.template(this.model.toJSON());
+    this.$el.html(template);
+    return this;
+  }
 });
 var taskView = new TaskView({model: task});
-console.log(taskView.$el);
+console.log(taskView.render().el);
 
 })();
