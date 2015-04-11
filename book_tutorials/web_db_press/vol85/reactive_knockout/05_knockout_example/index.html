@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>knockout WEB+DB PRESS example</title>
+
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+  body {
+      padding-top: 50px;
+  }
+  </style>
+
+  <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.2.0/knockout-min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/2.3.22/rx.lite.js"></script>
+
+  <!-- JavaScript の操作を簡略化するために利用する -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.js"></script>
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+  <form>
+    <div class="row">
+      <div class="col-sm-3">
+        <input type="text" id="query" name="query" placeholder="リポジトリ検索" class="form-control" />
+      </div>
+    </div>
+  </form>
+</div>
+
+<table class="table table-border">
+  <thead>
+    <tr>
+      <th>リポジトリ名
+        <input type="hidden" value="▲" id="ascBtn" />
+        <input type="hidden" value="▼" id="descBtn" />
+      </th>
+      <th>パス</th>
+      <th>オーナー</th>
+    </tr>
+  </thead>
+  <tbody data-bind="foreach: repos">
+    <tr>
+      <td data-bind="text: name"></td>
+      <td data-bind="text: full_name"></td>
+      <td>
+        <img data-bind="attr: {src: owner.avatar_url}" style="width:44px;" />
+        <span data-bind="text: owner.login"></span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>knockout WEB+DB PRESS example</title>
+
+  <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.2.0/knockout-min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/2.3.22/rx.lite.js"></script>
+
+  <!-- JavaScript の操作を簡略化するために利用する -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.js"></script>
+</head>
+<body>
+<input type="text" name="email" data-bind="value: email, valueUpdate: 'input'" />
+<p data-bind="text: email"></p>
+
+<script src="app.js"></script>
+</body>
+</html>

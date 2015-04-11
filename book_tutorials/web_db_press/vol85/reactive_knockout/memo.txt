@@ -1,0 +1,15 @@
+WEB+DB PRESS Vol.85
+特集2 リアクティブプログラミング
+第4章 データバインディング
+
+01_sigle_binding
+リスト1〜4
+
+02_multiple_binding
+リスト5
+
+03_knockout_first
+リスト6〜7
+
+04_knockout_list_binding
+リスト8〜10
