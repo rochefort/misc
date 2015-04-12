@@ -1,0 +1,21 @@
+{
+  "name": "how-to-npm-jp",
+  "version": "1.1.0",
+  "description": "HOW-TO-NPM-JP sample",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/rochefort/how-to-npm-jp"
+  },
+  "bugs": {
+    "url": "https://github.com/rochefort/how-to-npm-jp/issues"
+  },
+  "homepage": "https://github.com/rochefort/how-to-npm-jp"
+}
