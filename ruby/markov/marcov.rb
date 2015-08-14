@@ -29,12 +29,12 @@ module Asahicom
 
     def scrape_headline_top_url
       doc = Nokogiri::HTML.parse(open(TOP_URL))
-      sleep 1
       first_url = doc.css('.HeadlineTop a')[0][:href]
       URI.join(TOP_URL, first_url).to_s
     end
 
     def scrape_article_body(url)
+      sleep 1
       nokogiri = Nokogiri::HTML.parse(open(url))
       nokogiri.css('.ArticleText').text.tr("\n", '').gsub(/\A　/, '')
     end
@@ -42,11 +42,9 @@ module Asahicom
     def generate_mecab_tagger(text)
       # mecab = MeCab::Tagger.new('-Owakati')
       mecab = Natto::MeCab.new('-Owakati')
-      data = []
-      mecab.parse(text + 'EOS').split(' ').each_cons(3) do |a|
-        data.push(head: a[0], middle: a[1], end: a[2])
+      mecab.parse(text + 'EOS').split(' ').each_cons(3).map do |a|
+        { head: a[0], middle: a[1], end: a[2] }
       end
-      data
     end
 
     # マルコフ連鎖で要約
