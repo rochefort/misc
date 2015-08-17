@@ -13,6 +13,7 @@ module Asahicom
 
     def summarize_headline
       url = scrape_headline_top_url
+      sleep 1
       text = scrape_article_body(url)
       data = generate_mecab_tagger(text)
 
@@ -34,9 +35,8 @@ module Asahicom
     end
 
     def scrape_article_body(url)
-      sleep 1
-      nokogiri = Nokogiri::HTML.parse(open(url))
-      nokogiri.css('.ArticleText').text.tr("\n", '').gsub(/\A　/, '')
+      doc = Nokogiri::HTML.parse(open(url))
+      doc.css('.ArticleText').text.tr("\n", '').gsub(/\A　/, '')
     end
 
     def generate_mecab_tagger(text)
