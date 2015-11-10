@@ -1,0 +1,37 @@
+# chap1
+- 名前付き引数便利
+
+## 1.3
+- ''' -> 複数行文字列
+- docstring
+humansize.approximate_size.__doc__
+で表示可能
+
+## 1.4 Import検索パス
+sys.pathリスト
+
+# chap2
+## 2.2 ブール値
+Trueは1で、Falseは0だ!!
+これはきもい
+
+## 2.3 数値
+型は type() で調べれる
+特定の型かどうかは instance() で調べれる
+int() 関数は切り捨て!!
+// は整数の切り捨て除算
+
+ゼロは偽であり、ゼロではない数値は真だ!!
+
+a_list= ['a', 'b', 'mpilgrim', 'z', 'example']
+a_list[0:2]
+=> 'a', 'b'
+0から1番目まで。後ろの引数の手前まで。
+
+a_list[:]
+=> 全て返るが、コピーされた値
+
+
+# chap14
+http://diveintopython3.org/examples/feed.xml
+リンク切れ
