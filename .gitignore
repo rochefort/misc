@@ -1,2 +1,5 @@
 .DS_Store
 __pycache__
+.yardoc
+book_tutorials/perfect_ruby/14_gems/doc
+
