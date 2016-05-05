@@ -2,4 +2,5 @@
 __pycache__
 .yardoc
 book_tutorials/perfect_ruby/14_gems/doc
+book_tutorials/perfect_ruby/15_cli_todo/todo/.todo/
 
