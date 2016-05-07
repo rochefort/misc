@@ -23,5 +23,8 @@ module Todo
     validates :content, presence: true
     validates :status,  numericality: true, inclusion: { in: STATUS.values }
 
+    def status_name
+      STATUS.key(status)
+    end
   end
 end
