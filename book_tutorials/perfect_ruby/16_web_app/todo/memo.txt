@@ -1,0 +1,33 @@
+Todo::DB.prepare
+Todo::Task.create!(name: 'test_name', content: 'test_content')
+Todo::Task.where(name: 'test_name')
+
+
+
+command = Todo::Command.new
+command.execute
+task = command.create_task('sample1', 'content1')
+update_task = command.update_task(task.id, { content: 'sample1', status: 'done' })
+command.find_tasks('done')
+command.delete_task(update_task.id)
+command.find_tasks('done')
+
+# ----
+
+command = Todo::Command.new
+command.execute
+
+begin
+  command.create_task(nil, nil)
+rescue => e
+  p e.class
+  p e.record
+  e.record.errors.each do |column, message|
+    p column
+    p message
+  end
+end
+
+# ----
+
+Todo::Command::Options.parse!(['create', '-n name_val'])
