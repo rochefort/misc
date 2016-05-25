@@ -31,3 +31,8 @@ end
 # ----
 
 Todo::Command::Options.parse!(['create', '-n name_val'])
+
+
+# ----
+悪意のある入力
+be ruby exe/todo create -n "alert出るかな？" -c "<script>alert('hi')</script>"
