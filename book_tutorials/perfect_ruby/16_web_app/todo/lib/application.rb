@@ -38,5 +38,20 @@ module Todo
       end
       haml :index
     end
+
+    get '/tasks/new' do
+      @task = Task.new
+      haml :new
+    end
+
+    post '/tasks' do
+      begin
+        Task.create!(name: params[:name], content: params[:content])
+        redirect '/'
+      rescue ActiveRecord::RecordInvalid => e
+        @task = e.record
+        haml :new
+      end
+    end
   end
 end
