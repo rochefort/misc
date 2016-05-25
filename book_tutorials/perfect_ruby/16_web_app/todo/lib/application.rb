@@ -33,6 +33,10 @@ module Todo
       end
     end
 
+    not_found do
+      haml :not_found
+    end
+
     get '/' do
       redirect '/tasks'
     end
@@ -70,8 +74,12 @@ module Todo
     end
 
     get '/tasks/:id/edit' do
-      @task = Task.find(params[:id])
-      haml :edit
+      begin
+        @task = Task.find(params[:id])
+        haml :edit
+      rescue ActiveRecord::RecordNotFound
+        error 404
+      end
     end
 
     put '/tasks/:id' do
@@ -86,13 +94,19 @@ module Todo
       rescue ActiveRecord::RecordInvalid => e
         @task = e.record
         haml :edit
+      rescue ActiveRecord::RecordNotFound
+        error 404
       end
     end
 
     delete '/tasks/:id' do
-      task = Task.find(params[:id])
-      task.destroy
-      redirect '/'
+      begin
+        task = Task.find(params[:id])
+        task.destroy
+        redirect '/'
+      rescue ActiveRecord::RecordNotFound
+        error 404
+      end
     end
   end
 end
