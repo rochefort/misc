@@ -8,7 +8,9 @@ require 'todo/task'
 
 module Todo
   class Application < Sinatra::Base
+    use Rack::MethodOverride
     set :haml, escape_html: true
+
     configure do
       DB.prepare
     end
@@ -16,6 +18,19 @@ module Todo
     configure :development do
       require 'sinatra/reloader'
       register Sinatra::Reloader
+    end
+
+    helpers do
+      def error_class(task, name)
+        task.errors.has_key?(name) ? 'error' : ''
+      end
+
+      def options_for_task_status(task)
+        Task::STATUS.map { |key, value|
+          selected = (value == task.status) ? ' selected' : ''
+          %(<option value="#{value}"#{selected}>#{key}</option>)
+        }.join
+      end
     end
 
     get '/' do
@@ -51,6 +66,26 @@ module Todo
       rescue ActiveRecord::RecordInvalid => e
         @task = e.record
         haml :new
+      end
+    end
+
+    get '/tasks/:id/edit' do
+      @task = Task.find(params[:id])
+      haml :edit
+    end
+
+    put '/tasks/:id' do
+      begin
+        task = Task.find(params[:id])
+        task.update_attributes!(
+          name:    params[:name],
+          content: params[:content],
+          status:  params[:status]
+        )
+        redirect '/'
+      rescue ActiveRecord::RecordInvalid => e
+        @task = e.record
+        haml :edit
       end
     end
   end
