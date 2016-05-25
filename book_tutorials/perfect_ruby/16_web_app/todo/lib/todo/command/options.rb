@@ -46,13 +46,19 @@ module Todo
         sub_command_parsers['update'] = OptionParser.new do |opt|
           opt.banner = 'Usage: update id <args>'
           opt.on('-n VAL', '--name=VAL',    'search name')    { |v| options[:name] = v }
-          opt.on('-n VAL', '--content=VAL', 'search content') { |v| options[:content] = v }
-          opt.on('-n VAL', '--status=VAL',  'search status')  { |v| options[:status] = v }
+          opt.on('-c VAL', '--content=VAL', 'search content') { |v| options[:content] = v }
+          opt.on('-s VAL', '--status=VAL',  'search status')  { |v| options[:status] = v }
           opt.on_tail('-h', '--help', 'Show this message')    { |_v| help_sub_command(opt) }
         end
 
         sub_command_parsers['delete'] = OptionParser.new do |opt|
           opt.banner = 'Usage: delete'
+          opt.on_tail('-h', '--help', 'Show this message') { |_v| help_sub_command(opt) }
+        end
+
+        sub_command_parsers['server'] = OptionParser.new do |opt|
+          opt.banner = 'Usage: server <args>'
+          opt.on('-p VAL', '--port=VAL', 'Port(default:9292)') { |v| options[:port] = v }
           opt.on_tail('-h', '--help', 'Show this message') { |_v| help_sub_command(opt) }
         end
 
@@ -71,6 +77,7 @@ module Todo
             { name: 'update id -n name -c content -s status', summary: 'Update Todo task' },
             { name: 'list -s status',                         summary: 'List   Todo task' },
             { name: 'delete id',                              summary: 'Delete Todo task' },
+            { name: 'server -p port',                         summary: 'Start http server process' },
           ]
           opt.banner = "Usage: #{opt.program_name} [-h|--help] [-v|--version] <command> [<args>]"
           opt.separator ''
