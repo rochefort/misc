@@ -92,3 +92,11 @@ htmlの改行が半角スペースとして要素間に挿入される。
 その他：改行しない、タグの中で改行する、改行をコメントアウトする、
 float（display: block;になる）を使う、display: table; を使う、
 display: flex; を使う
+
+1. vertical-align
+インラインレベルの要素、テーブルセルの要素
+
+1. webkit-transform
+中にtextがある場合は、逆向きで相殺
+
+1. cssカウンタ便利
