@@ -53,3 +53,42 @@ nav要素
 
 transition: 0.15s;
 も良い
+
+1. outline意識すること(P.047)
+見出しで区切る or sectionで区切る(sectionは見出しを持つことが推奨されている)
+
+1. ブロックレベル要素とインライン要素(P.50)
+HTML5でブロックレベル要素、インライン要素という分類は廃止
+CSSのdisplayプロパティのあたいは要素の種類ごとに定められているのは変わらない
+a要素のdisplayプロパティのデフォルト値は変わらずinline、a要素に高さをもたせたい場合は
+inline-blockかblockの指定が必要。
+
+1. コンテンツモデル(P.49)
+a様相は親要素次第でdiv要素を囲むことができる
+???
+
+1. box-sizing
+width/heightの指定がpadding, border を含めた値となるので、より直感的に%指定とかできる
+```css
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+```
+
+1. datetime入れとくといいよ
+
+1. line-height(P.56)
+子要素にも適用されるので、数値にしておくと安心
+
+1. overflow-y: auto(P.63)
+子要素がはみ出した場合、スクロールバーが表示され横幅が変わるので
+子要素のwidthは%指定にする
+
+1. display: inline, inline-block(P.64)
+htmlの改行が半角スペースとして要素間に挿入される。
+解決策として、親要素にfont-size: 0;を指定。
+※古いandroidでは効かないかも
+
+その他：改行しない、タグの中で改行する、改行をコメントアウトする、
+float（display: block;になる）を使う、display: table; を使う、
+display: flex; を使う
