@@ -1,0 +1,136 @@
+# ready
+$ cat sales.dat
+dotinstall item-5 100 2013/03/15 17:26:55
+dotinstall item-2 250 2013/03/16 04:45:14
+dotinstall item-2 250 2013/03/16 04:45:14
+fkoji item-4 10 2013/03/07 16:40:24
+fkoji item-4 10 2013/03/07 16:40:24
+fkoji item-4 10 2013/03/07 16:40:24
+hoge item-2 200 2013/03/09 07:38:57
+fkoji item-4 10 2013/03/07 16:40:24
+fkoji item-4 10 2013/03/07 16:40:24
+fkoji item-4 10 2013/03/07 16:40:24
+ta item-2 200 2013/03/09 07:38:57
+
+
+# 02
+awk -f ex1.awk sales.dat
+awk '{ print $3 }' sales.dat
+
+# 03
+record: $0 レコード全体
+field: $1-
+
+NF: fieldの数
+NR: 何番目のレコードか
+
+# 04
+- 特定レコードのみ処理を行う
+- BEGIN/END
+- FS: field separator
+```
+BEGIN {
+  print "-- start --"
+  # FS = "-"
+}
+NR < 5 {
+  #print NR ":" $0
+}
+NR > 10 {
+  #print NR ":" $0
+}
+END {
+  print "-- end --"
+}
+```
+- パターンはカンマでくぎれる（from/to）
+NR == 5, NR == 10 { print }
+
+# 05
+- パターンには < > <= >= == != が使える
+- && || !
+- 正規表現
+```
+# 5と10より大きい
+(NR == 5) || (NR > 10) {
+  print NR ":" $0
+}
+
+# item-2 or item-3
+$2 ~ /item-[23]/ {
+  print $0
+}
+```
+
+# 06 printf
+```
+{
+  printf("name:%-10s sales:%5d\n", $1, $3)
+}
+```
+
+# 07 変数、演算子
+文字列はスペースで連結
+```
+BEGIN {
+  sum = 0
+}
+{
+  # sum = sum + $3
+  sum += $3
+}
+END {
+  print sum
+}
+```
+
+# 08 組み込み関数
+rand()
+int()
+length()
+substr()
+
+# 09 if
+# 10 for/while
+```
+{
+  printf("%-12s %5d ", $1, $3)
+  for (i = 0; i < int($3/10); i++) {
+    printf("*")
+  }
+  printf("\n")
+}
+
+{
+  printf("%-12s %5d ", $1, $3)
+  i = 0
+  while (i < int($3/10)) {
+    printf("*")
+    i++
+  }
+  printf("\n")
+}
+```
+
+# 11 配列
+# 12 配列2
+```
+{
+  sales[$1] += $3
+}
+END {
+  for (name in sales) {
+    print name ":" sales[name]
+  }
+}
+```
+
+# 13 関数
+
+function getRate(n) {
+  return int(n / 100) * 0.1
+}
+
+{
+  printf("%-12s %5d rate:%0.1f\n", $1, $3, getRate($3))
+}
