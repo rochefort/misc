@@ -2,11 +2,12 @@ const React = require('react');
 const {dialog} = require('electron').remote;
 const T = require('../services/twitter');
 const Draft = require('../services/draft');
+const Screenshot = require('../services/screenshot');
 
 module.exports = class FormContent extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {text: ''};
+    this.state = {text: '', nativeImage: null};
   }
 
   componentDidMount() {
@@ -22,6 +23,14 @@ module.exports = class FormContent extends React.Component {
   render() {
     return (
       <div className='window'>
+        <header className='toolbar toolbar-footer'>
+          <div className='toolbar-actions'>
+            <button className='btn btn-default pull-right'
+              onClick={this.handleCaptureButtonClick.bind(this)}>
+              <span className="icon icon-monitor"></span>
+            </button>
+          </div>
+        </header>
         <div id='window-content' className='window-content'>
           <div>
             <textarea style={{width: 300, height: 250}}
@@ -30,9 +39,14 @@ module.exports = class FormContent extends React.Component {
               value={this.state.text}/>
           </div>
         </div>
-        <footer clasName='toolbar toolbar-footer'>
-          <div clasName='toolbar-actions'>
-            <button clasName='btn btn-primary pull-right'
+        <footer className='toolbar toolbar-footer'>
+          <div className='toolbar-actions'>
+            {this.state.nativeImage !== null ?
+              <img className='img-rounded media-object pull-left'
+                src={this.state.nativeImage.toDataURL()}
+                width='32' height='32' />
+            : null }
+            <button className='btn btn-primary pull-right'
               onClick={this.handleSendButtonClick.bind(this)}>
               ツイート
             </button>
@@ -50,7 +64,17 @@ module.exports = class FormContent extends React.Component {
     Draft.write(this.state.text)
       .catch(error => {
         console.log(error);
+      });
+  }
+
+  handleCaptureButtonClick() {
+    Screenshot.capture()
+      .catch(error => {
+        console.log(error);
       })
+      .then(nativeImage => {
+        this.setState({nativeImage: nativeImage});
+      });
   }
 
   handleSendButtonClick() {
@@ -65,15 +89,36 @@ module.exports = class FormContent extends React.Component {
       if (index === 1) {
         return;
       }
-      let params = {status: this.state.text.trim()};
-      T.post('statuses/update', params)
-        .catch(error => {
-          console.log(error);
-        })
-        .then(result => {
-          console.log(result);
-          this.setState({text: ''});
-        });
+      new Promise((onFulfilled, onRejected) => {
+        if (this.state.nativeImage === null) {
+          onFulfilled();
+          return;
+        }
+
+        return T.post('media/upload', {
+          media_data: this.state.nativeImage.toPng().toString('base64')
+          })
+          .catch(error => {
+            console.log(error);
+          })
+          .then(result => {
+            onFulfilled(result.data.media_id_string);
+          });
+      }).then(mediaId => {
+        let params = {status: this.state.text.trim()};
+        if (mediaId) {
+          params.media_ids = [mediaId];
+        }
+
+        T.post('statuses/update', params)
+          .catch(error => {
+            console.log(error);
+          })
+          .then(result => {
+            this.setState({text: '', nativeImage: null});
+            ipcRenderer.send('finishTweet');
+          });
+      });
     });
   }
 };
