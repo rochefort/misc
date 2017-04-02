@@ -1,10 +1,13 @@
-{
+WEB+DB Vol.94{
   "private": true,
   "scripts": {
-    "start": "electron src"
+    "start": "electron src",
+    "test": "mocha"
   },
   "devDependencies": {
+    "devtron": "^1.2.1",
     "electron-prebuilt": "1.2.8",
-    "devtron": "^1.2.1"
+    "mocha": "^2.5.3",
+    "spectron": "^3.2.4"
   }
 }
