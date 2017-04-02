@@ -40,5 +40,8 @@ module.exports = class TimelineWindow {
 
   updateBadge() {
     app.setBadgeCount(this.newMentionsCount);
+    if (process.platform === 'darwin') {
+      app.dock.bounce();
+    }
   }
 };
