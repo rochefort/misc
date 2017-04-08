@@ -1,16 +1,9 @@
-'use strict';
+'use strict'
 
-module.exports.hello = (event, context, callback) => {
-  const response = {
-    statusCode: 200,
-    body: JSON.stringify({
-      message: 'Go Serverless v1.0! Your function executed successfully!',
-      input: event,
-    }),
-  };
+const amazon = require('./lib/amazon')
 
-  callback(null, response);
-
-  // Use this code if you don't use the http event with the LAMBDA-PROXY integration
-  // callback(null, { message: 'Go Serverless v1.0! Your function executed successfully!', event });
-};
+module.exports.reviews = (event, context) => {
+  amazon.getProductReviews(event.queryStringParameters.asin)
+    .then((reviews) => context.succeed(reviews))
+    .catch((err) => context.fail(err))
+}
